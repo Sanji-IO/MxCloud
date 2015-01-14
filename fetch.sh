@@ -45,9 +45,8 @@ init)
     git_subtree_bundle init
 
     # # Add SDK
-    # git remote add sanji $SDK_REPO >>subtree.log 2>&1
-    # git fetch sanji $BRANCH
-    # git subtree add -P library/sanji sanji/$BRANCH --squash
+    git subtree add --prefix libs/sanji \
+      git@github.com:Sanji-IO/sanji.git $BRANCH --squash >>subtree.log 2>&1
     ;;
 
 update)
@@ -56,7 +55,7 @@ update)
     git_subtree_bundle update
 
     # Update SDK
-    # git fetch sanji develop
-    # git subtree pull -P library/sanji sanji $BRANCH --squash
+    git subtree pull --prefix libs/sanji \
+      git@github.com:Sanji-IO/sanji.git $BRANCH --squash >>subtree.log 2>&1
     ;;
 esac
