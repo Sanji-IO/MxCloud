@@ -44,7 +44,7 @@ init)
     # Add bundles
     git_subtree_bundle init
 
-    # # Add SDK
+    # Add SDK
     git subtree add --prefix libs/sanji \
       git@github.com:Sanji-IO/sanji.git $BRANCH --squash >>subtree.log 2>&1
     ;;
