@@ -28,6 +28,6 @@ install:
 deploy:
 	-@git remote remove $(TARGET)
 	@git remote add $(TARGET) ssh://$(SSHUSER)@$(TARGET):$(DEPLOY_DIR)
-	@sshpass -p $(SSHPASS) git push $(TARGET)
+	@sshpass -p $(SSHPASS) git push $(TARGET) -f
 
 .PHONY: init update build install deploy

@@ -2,18 +2,18 @@
 
 echo "Deploying..."
 
-GIT_DIR_OLD=$GIT_DIR
-APP_DIR=/home/moxa/app
-POST_DEPLOY_SCRIPT=$APP_DIR/post-deploy.sh
+export GIT_DIR_OLD=$GIT_DIR
+export APP_DIR=/home/moxa/app
+export POST_DEPLOY_SCRIPT=$APP_DIR/post-deploy.sh
 
-if [ ! `GIT_DIR=$APP_DIR && git pull -v && git checkout -f` ]; then
+if [ ! `GIT_DIR=$APP_DIR/.git && git pull -v && git checkout -f` ]; then
 	GIT_DIR=$GIT_DIR_OLD
 	git clone . $APP_DIR
 fi
 
 if [ -f $POST_DEPLOY_SCRIPT ]; then
 	echo "Executing post-deploy.sh..."
-	/bin/bash -c -l $POST_DEPLOY_SCRIPT
+	/bin/bash -l -c $POST_DEPLOY_SCRIPT
 fi
 
 echo "Done!"
