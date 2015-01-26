@@ -43,19 +43,11 @@ init)
     echo "[Init] Branch: $BRANCH"
     # Add bundles
     git_subtree_bundle init
-
-    # Add SDK
-    git subtree add --prefix libs/sanji \
-      git@github.com:Sanji-IO/sanji.git $BRANCH --squash >>subtree.log 2>&1
     ;;
 
 update)
     echo "[Update]"
     # Update bundles
     git_subtree_bundle update
-
-    # Update SDK
-    git subtree pull --prefix libs/sanji \
-      git@github.com:Sanji-IO/sanji.git $BRANCH --squash >>subtree.log 2>&1
     ;;
 esac
